@@ -18,9 +18,9 @@ namespace Learning_Calculatrice
 
         public static int ShowInformations()
         {
-            List<string> selection = new List<string> { "Addition", "Multiplication", "Division", "Soustraction" };
+            List<string> selection = new List<string> { "Addition", "Soustraction", "Multiplication", "Divison" };
             int index = 1;
-            Console.WriteLine("Calculateur Console");
+            Console.WriteLine("Calculateur Console 2 nombres");
             foreach (var x in selection)
             {
                 Console.WriteLine($"\tOption {index++} : {x}");
@@ -29,7 +29,8 @@ namespace Learning_Calculatrice
             int choix = Convert.ToInt32(Console.ReadLine());
             return choix;
         }
-
+        
+    
 
 
 
