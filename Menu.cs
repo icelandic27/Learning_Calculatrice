@@ -10,27 +10,41 @@ namespace Learning_Calculatrice
 {
     internal class Menu
     {
-
-        
+        private static string choix;
+        public static string Choix
+        {
+            get { return choix; }
+            set { choix = value; }
+        }
 
         //public List<string> Selection { get; set; }
 
-
-        public static int ShowInformations()
+        public static void ShowInformations()
         {
-            List<string> selection = new List<string> { "Addition", "Soustraction", "Multiplication", "Divison" };
+            //String readText = File.ReadAllText("Data.txt");
+
+            List<string> selection = new List<string> { "Addition", "Soustraction", "Multiplication", "Divison",
+                "Ln", "Log nombre + base", "X puissance Y" };
             int index = 1;
             Console.WriteLine("Calculateur Console 2 nombres");
+            Console.WriteLine($"Le Calculateur à été utilisé : {Calcul.numeration} Fois\n");
+            
             foreach (var x in selection)
             {
-                Console.WriteLine($"\tOption {index++} : {x}");
+                Console.WriteLine($"Option {index++} : {x}");
             }
+            Console.WriteLine("Q pour Quitter\n");
             Console.Write("Votre choix : ");
-            int choix = Convert.ToInt32(Console.ReadLine());
-            return choix;
+
         }
+        public static string GetInformations()
+        {
+            Choix = Console.ReadLine();
+            return Choix;
+        }
+
         
-    
+
 
 
 
