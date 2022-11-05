@@ -41,7 +41,7 @@ namespace Learning_Calculatrice
         {
             if (File.Exists(Liste_Calcul))
             {
-                foreach (Dictionary<string, double> in File.ReadLines(Liste_Calcul)) ;
+               // foreach (Dictionary<string, double> in File.ReadLines(Liste_Calcul)) ;
             }
                 
 

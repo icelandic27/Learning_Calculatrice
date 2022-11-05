@@ -15,12 +15,15 @@ namespace Learning_Calculatrice
         private bool boucle = true;
         public static int numeration;
         private static string type;
-        public Dictionary<string, double> Data;
+        public static Dictionary<string, double> result = new Dictionary<string, double>();
+        public string choix2;
+
+
 
         public static string Type
         {
             get { return type; }
-            set { type = value; }  
+            set { type = value; }
         }
 
         public bool Boucle
@@ -47,17 +50,25 @@ namespace Learning_Calculatrice
 
         public double Calculatrice(string choix)
         {
+            if(choix == "8")
+            {
+                Console.WriteLine("Voici les derniers calsul :");
+            }
+            else
+            {
+                Console.Write("Votre premier nombre : ");
 
-            Console.Write("Votre premier nombre : ");
+                Nombre1 = Convert.ToDouble(Console.ReadLine());
 
-            Nombre1 = Convert.ToDouble(Console.ReadLine());
+                Console.Write("Votre deuxième nombre : ");
 
-            Console.Write("Votre deuxième nombre : ");
-
-            Nombre2 = Convert.ToDouble(Console.ReadLine());
-
+                Nombre2 = Convert.ToDouble(Console.ReadLine());
+            }
+           
+            choix2 = choix;
             switch (choix)
             {
+
                 case "1":
                     {
 
@@ -91,11 +102,26 @@ namespace Learning_Calculatrice
                 case "6":
                     {
                         Valeur = Log(Nombre1, Nombre2);
+                        Type = "Ln";
                         break;
                     }
                 case "7":
                     {
                         Valeur = Power(Nombre1, Nombre2);
+                        Type = "x";
+                        break;
+                    }
+                case "8":
+                    {
+                        int index = 1;
+                        foreach (var x in result)
+                        {
+                            Console.WriteLine($"{index++} : { x.Key} + { x.Value}");
+
+                        }
+
+                      
+
                         break;
                     }
                 default:
@@ -138,15 +164,44 @@ namespace Learning_Calculatrice
         }
         public void ShowResultat(double input)
         {
-
-            Console.WriteLine($"Le résultat de {Nombre1} {Type} {Nombre2} est {input}\n");
             String x = $"{Nombre1.ToString()} {Type.ToString()} {Nombre2.ToString()} = ";
-            Dictionary <string, double> result = new Dictionary<string, double>();
-            result.Add(x, input);
-            FileManagement.Save_Calcul(result);
-            
+            if (choix2 == "8")
+            {
+                if (result.ContainsKey(x))
+                {
+                    
+                }
+                else
+                {
+                    result.Add(x, input);
+                }
+            }
+            else
+            {
+
+                Console.WriteLine($"Le résultat de {Nombre1} {Type} {Nombre2} est {input}\n");
+                
+                if (result.ContainsKey(x))
+                {
+                    FileManagement.Save_Calcul(result);
+                }
+                else
+                {
+                    result.Add(x, input);
+                }
+
+
+            }
+
+
+
+
+
 
         }
+
     }
 }
+
+
 
